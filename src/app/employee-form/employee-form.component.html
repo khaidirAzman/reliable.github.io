@@ -1,0 +1,67 @@
+<h3>{{[formType]}} employee</h3>
+  <form>
+    <div class="container">
+      <div class="row">
+      <div class="form-group col-sm-4">
+        <label><strong>Username</strong></label>
+        <input type="text" class="form-control" [(ngModel)]="employee.username" name="username" required>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label><strong>Employee ID</strong></label>
+        <input type="text" class="form-control" [(ngModel)]="employee.empid" name="empid" required>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label><strong>E-mail</strong></label>
+        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email" required>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label><strong>Date of Birth</strong></label>
+        <input type="date" class="form-control" [(ngModel)]="employee.dob"  name="dob" required>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label><strong>Position</strong></label>
+        <select class="form-control" [(ngModel)]="employee.position" name="position" required>
+          <option disabled default>Select a position</option>
+          <option *ngFor="let position of positions; let i = index">
+            {{position.value}}</option>
+        </select>
+      </div>
+      <div class="form-group row secondLevel">
+        <div class="form-group col-sm-4">
+          <div class="col-sm-12">
+            <label><strong>Gender</strong></label>
+          </div>
+          <div class="col-sm" *ngFor="let gender of genders; let index = index">
+            <input type="radio" name="radio" (change)="changeGender(gender.value)"
+                   [checked]= "gender.value === employee.gender">
+            <label style="margin-left: 1rem">{{gender.value}}</label>
+          </div>
+        </div>
+
+        <div class="form-group col-sm">
+          <div class="col-sm-12">
+            <label><strong>Hobbies</strong></label>
+          </div>
+          <div *ngFor="let hobby of hobbies; let index = index" class="col-sm-3">
+            <label style="margin-left: 1rem">
+            <input type="checkbox" [name]="'checkbox'+index"
+                   [(ngModel)]="hobby.checked" value="{{hobby.id}}">
+            {{hobby.value}}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-12 thirdLevel">
+        <div class="col-sm-12">
+          <label><strong>Address</strong></label>
+        </div>
+        <textarea name="message" rows="4" cols="150" placeholder="" [(ngModel)]="employee.address"></textarea>
+      </div>
+      </div>
+    </div>
+  </form>
