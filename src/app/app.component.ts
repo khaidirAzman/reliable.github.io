@@ -60,6 +60,17 @@ export class AppComponent {
     document.getElementById("backdrop")!.style.display = "none";
     document.getElementById("formModal")!.style.display = "none";
     document.getElementById("formModal")!.classList.remove("show");
+    this.EmployeeSchema = {
+      username: "",
+      id: "",
+      email: "",
+      dob: "",
+      gender: "",
+      position: "",
+      address: "",
+      empid: "",
+      hobbies: ['']
+    };
     this.employee = this.EmployeeSchema;
   }
 
