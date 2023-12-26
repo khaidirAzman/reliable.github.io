@@ -34,7 +34,17 @@ export class EmployeeFormComponent {
     this.employee.gender = value;
   }
 
-  // changeHobbies(value: string[]){
-  //   this.employee.hobbiesList = value;
-  // }
+  changeHobby(value: string, name: number){
+    let state = document.getElementById('checkbox'+name) as HTMLInputElement;
+    if (state && state.checked){
+      this.employee.hobbies.push(value);
+    } else {
+      let index = this.employee.hobbies.indexOf(value);
+      this.employee.hobbies.splice(index,1);
+    }
+  }
+
+  isHobbyChecked(hobbies: string[], value:string){
+    return (hobbies.indexOf(value) >= 0);
+  }
 }

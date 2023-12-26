@@ -1,6 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.css";
 @import "font-awesome";
 @import "sweetalert2/dist/sweetalert2.css";
+@import "animate.css";
 
 .swal2-popup{
   width:auto;
