@@ -48,8 +48,8 @@
           </div>
           <div *ngFor="let hobby of hobbies; let index = index" class="col-sm-3">
             <label style="margin-left: 1rem">
-            <input type="checkbox" [name]="'checkbox'+index"
-                   [(ngModel)]="hobby.checked" value="{{hobby.id}}">
+            <input type="checkbox" [id]="'checkbox'+index" (change)="changeHobby(hobby.value, index)"
+                   [checked]="isHobbyChecked(employee.hobbies, hobby.value)" value="{{hobby.value}}">
             {{hobby.value}}
             </label>
           </div>
