@@ -6,6 +6,7 @@ import {SweetalertComponent} from "./sweetalert/sweetalert.component";
 import {EmployeeFormComponent} from "./employee-form/employee-form.component";
 import { v4 as uuidv4 } from 'uuid';
 import moment from "moment";
+import Swal from "sweetalert2";
 
 function changeDOBtoString(employees: any) {
   employees.forEach(function (e:any){
@@ -36,7 +37,7 @@ export class AppComponent {
     position: "",
     address: "",
     empid: "",
-    hobbies: []
+    hobbies: ['']
   };
   employee = this.EmployeeSchema;
   formType: string = '';
@@ -72,10 +73,46 @@ export class AppComponent {
     }
     if (formType === 'new'){
       this.EmployeeListData.push(this.employee);
+      Swal.fire({
+        title:`Added new Reliable employee : ${this.employee.username}`,
+        icon: "success",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
       this.closeModal();
     } else {
       let index = this.EmployeeListData.indexOf(this.employee);
       this.EmployeeListData[index] = this.employee;
+      Swal.fire({
+        title:`Updated Reliable employee : ${this.employee.username}`,
+        icon: "success",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
       this.closeModal();
     }
   }
