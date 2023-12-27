@@ -4,28 +4,28 @@
       <div class="row">
       <div class="form-group col-sm-4">
         <label><strong>Username</strong></label>
-        <input type="text" class="form-control" [(ngModel)]="employee.username" name="username" required>
+        <input type="text" class="form-control" [(ngModel)]="employee.username" name="username" placeholder="Username...">
       </div>
 
       <div class="form-group col-sm-4">
         <label><strong>Employee ID</strong></label>
-        <input type="text" class="form-control" [(ngModel)]="employee.empid" name="empid" required>
+        <input type="text" class="form-control" [(ngModel)]="employee.empid" name="empid" placeholder="Employee ID...">
       </div>
 
       <div class="form-group col-sm-4">
         <label><strong>E-mail</strong></label>
-        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email" required>
+        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email" placeholder="E-mail...">
       </div>
 
       <div class="form-group col-sm-4">
         <label><strong>Date of Birth</strong></label>
-        <input type="date" class="form-control" [(ngModel)]="employee.dob"  name="dob" required>
+        <input type="date" class="form-control" [(ngModel)]="employee.dob"  name="dob">
       </div>
 
       <div class="form-group col-sm-4">
         <label><strong>Position</strong></label>
-        <select class="form-control" [(ngModel)]="employee.position" name="position" required>
-          <option disabled default>Select a position</option>
+        <select class="form-control" [(ngModel)]="employee.position" name="position">
+          <option value=""  disabled selected hidden>Select a position...</option>
           <option *ngFor="let position of positions; let i = index">
             {{position.value}}</option>
         </select>
@@ -60,7 +60,7 @@
         <div class="col-sm-12">
           <label><strong>Address</strong></label>
         </div>
-        <textarea name="message" rows="4" cols="150" placeholder="" [(ngModel)]="employee.address"></textarea>
+        <textarea name="message" rows="4" cols="150" placeholder="Address.." [(ngModel)]="employee.address"></textarea>
       </div>
       </div>
     </div>

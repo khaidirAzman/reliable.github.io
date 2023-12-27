@@ -7,3 +7,9 @@
   width:auto;
 }
 
+.form-group.form-control {
+  ::placeholder {
+    font-style: italic;
+  }
+}
+
