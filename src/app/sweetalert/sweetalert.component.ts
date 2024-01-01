@@ -3,12 +3,13 @@ import {CommonModule} from "@angular/common";
 import {EmployeeFormComponent} from "../employee-form/employee-form.component";
 
 import Swal from "sweetalert2";
+import {NgbTooltip} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-sweetalert',
   standalone: true,
   imports: [
-    CommonModule, EmployeeFormComponent
+    CommonModule, EmployeeFormComponent, NgbTooltip
   ],
   templateUrl: './sweetalert.component.html',
   styleUrl: './sweetalert.component.css'

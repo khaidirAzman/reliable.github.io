@@ -13,3 +13,13 @@
   }
 }
 
+/*tooltip*/
+.buttonTooltip {
+  z-index: 0;
+}
+
+/*form modal*/
+.modal-dialog {
+  z-index: 999;
+  max-width: 85rem;
+}

@@ -7,6 +7,7 @@ import {EmployeeFormComponent} from "./employee-form/employee-form.component";
 import { v4 as uuidv4 } from 'uuid';
 import moment from "moment";
 import Swal from "sweetalert2";
+import {NgbTooltip} from "@ng-bootstrap/ng-bootstrap";
 
 function changeDOBtoString(employees: any) {
   employees.forEach(function (e:any){
@@ -18,7 +19,7 @@ function changeDOBtoString(employees: any) {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SweetalertComponent, EmployeeFormComponent],
+  imports: [CommonModule, RouterOutlet, SweetalertComponent, EmployeeFormComponent, NgbTooltip],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
