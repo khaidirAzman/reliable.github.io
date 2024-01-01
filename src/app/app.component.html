@@ -8,7 +8,8 @@
           </div>
           <!-- Button trigger modal -->
           <div style="float: right;margin: 5rem 5rem 0 0">
-            <button type="button" class="btn btn-success" (click)='openModal("new")'>
+            <button type="button" class="btn btn-success" [ngbTooltip]="'New'" tooltipClass="buttonTooltip"
+                    (click)='openModal("new")'>
             New employee
             </button>
           </div>
@@ -29,7 +30,8 @@
       <tbody>
         <tr *ngFor="let employee of EmployeeListData; let i = index">
           <td>
-            <button type="button" class="btn btn-primary" (click)='openModal("edit", employee)'>
+            <button type="button" class="btn btn-primary" [ngbTooltip]="'Edit'" tooltipClass="buttonTooltip"
+                    (click)='openModal("edit", employee)'>
               <i class="fa fa-pencil fa-lg"></i>
             </button>
             <app-sweetalert

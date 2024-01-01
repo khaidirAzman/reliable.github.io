@@ -7,3 +7,19 @@
   width:auto;
 }
 
+.form-group.form-control {
+  ::placeholder {
+    font-style: italic;
+  }
+}
+
+/*tooltip*/
+.buttonTooltip {
+  z-index: 0;
+}
+
+/*form modal*/
+.modal-dialog {
+  z-index: 999;
+  max-width: 85rem;
+}
