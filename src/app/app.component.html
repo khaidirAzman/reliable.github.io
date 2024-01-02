@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="table-responsive">
+  <div class="table-responsive" style="overflow-x: hidden">
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
@@ -8,7 +8,8 @@
           </div>
           <!-- Button trigger modal -->
           <div style="float: right;margin: 5rem 5rem 0 0">
-            <button type="button" class="btn btn-success" (click)='openModal("new")'>
+            <button type="button" class="btn btn-success" [ngbTooltip]="'New'" tooltipClass="buttonTooltip"
+                    (click)='openModal("new")'>
             New employee
             </button>
           </div>
@@ -29,7 +30,8 @@
       <tbody>
         <tr *ngFor="let employee of EmployeeListData; let i = index">
           <td>
-            <button type="button" class="btn btn-primary" (click)='openModal("edit", employee)'>
+            <button type="button" class="btn btn-primary" [ngbTooltip]="'Edit'" tooltipClass="buttonTooltip"
+                    (click)='openModal("edit", employee)'>
               <i class="fa fa-pencil fa-lg"></i>
             </button>
             <app-sweetalert
@@ -56,8 +58,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Employee form</h5>
-          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-            <span aria-hidden="true">X</span>
+          <button type="button" class="close btn btn-light" style="cursor: pointer" aria-label="Close" (click)="closeModal()">
+            <i class="fa fa-close"></i>
           </button>
         </div>
         <div class="modal-body">

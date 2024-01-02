@@ -3,12 +3,13 @@ import {CommonModule} from "@angular/common";
 import {EmployeeFormComponent} from "../employee-form/employee-form.component";
 
 import Swal from "sweetalert2";
+import {NgbTooltip} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-sweetalert',
   standalone: true,
   imports: [
-    CommonModule, EmployeeFormComponent
+    CommonModule, EmployeeFormComponent, NgbTooltip
   ],
   templateUrl: './sweetalert.component.html',
   styleUrl: './sweetalert.component.css'
@@ -23,47 +24,50 @@ export class SweetalertComponent {
 
   showAlert(employee: any, buttonType: string, index?: number) {
     let currentEmployee = (index || index === 0 ? employee[index] : index);
-    // DELETE
+    // DELETE record
     if (buttonType === 'delete'){
       Swal.fire({
         title: `Do you want to delete information of ${currentEmployee.username}?`,
         showCancelButton: true,
         confirmButtonText: "OK",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        },
         icon: "warning"
       }).then((result) => {
         if (result.isConfirmed) {
           employee.splice(index,1);
-          Swal.fire(`DELETED: ${currentEmployee.username}`);
+          Swal.fire({
+            title:`Deleted Reliable employee: ${currentEmployee.username}`,
+            icon: "success",
+            showClass: {
+              popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+            },
+            hideClass: {
+              popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+            }
+          });
         }
       });
-    }
-    else if (buttonType === 'edit') {
-      Swal.fire({
-        title: 'Edit Form',
-        html: `<app-employee-form
-                [employee]="employee"
-                ></app-employee-form>
-                `,
-        showCancelButton: true,
-        confirmButtonText: 'Submit',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(`CONFIRMED: ${currentEmployee.username}`);
-        }
-      })
-    } else {
-      Swal.fire({
-        title: 'New Form',
-        html: `<app-employee-form
-                [employee]="employee"
-                ></app-employee-form>`,
-        showCancelButton: true,
-        confirmButtonText: 'Submit',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(`SAVED: ${currentEmployee.username}`);
-        }
-      })
     }
   }
 }
