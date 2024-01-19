@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import datasource from '../assets/datasource.json';
+import {NgbTooltip} from "@ng-bootstrap/ng-bootstrap";
 import {SweetalertComponent} from "./sweetalert/sweetalert.component";
 import {EmployeeFormComponent} from "./employee-form/employee-form.component";
 import { v4 as uuidv4 } from 'uuid';
 import moment from "moment";
 import Swal from "sweetalert2";
-import {NgbTooltip} from "@ng-bootstrap/ng-bootstrap";
 import $ from 'jquery'
+import datasource from '../assets/datasource.json';
+import {FilterUsernamePipe} from "./filter-username.pipe";
 
 function changeDOBtoString(employees: any) {
   employees.forEach(function (e:any){
@@ -20,13 +21,25 @@ function changeDOBtoString(employees: any) {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SweetalertComponent, EmployeeFormComponent, NgbTooltip],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    SweetalertComponent,
+    EmployeeFormComponent,
+    NgbTooltip,
+    FilterUsernamePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
   constructor() {
   }
+
+  ngOnDestroy(): void {
+    }
+
+  ngOnInit(): void {
+    }
 
   title = 'reliable';
   EmployeeListData: any[] = changeDOBtoString(datasource[0]);
@@ -46,9 +59,6 @@ export class AppComponent {
   static positionList: any[] = datasource[1];
   static hobbiesList: any[] = datasource[2];
   static genderList: any[] = datasource[3];
-
-  protected readonly JSON = JSON;
-
   openModal(type:string, ...employee:any) {
     $('#backdrop')
       .css("display" , "block");
@@ -80,7 +90,6 @@ export class AppComponent {
     };
     this.employee = this.EmployeeSchema;
   }
-
   getEmployee():any{
     return this.employee;
   }
